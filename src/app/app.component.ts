@@ -46,14 +46,6 @@ export class AppComponent {
     this.loadData();
   }
 
-  public createForm(data: any): FormGroup {
-    return this.fb.group({
-      itemName: [data.itemName, Validators.required],
-      itemDescription: [data.itemDescription, Validators.required],
-      itemPrice: [data.itemPrice, Validators.required]
-    });
-  }
-
   public loadData(): void {
     if (this.dataFromApi) {
       this.searchForm.controls.fname.setValue(this.dataFromApi.fname);
@@ -68,6 +60,14 @@ export class AppComponent {
   public addItem(data): void {
     this.items = this.searchForm.get('items') as FormArray;
     this.items.push(this.createForm(data));
+  }
+
+  public createForm(data: any): FormGroup {
+    return this.fb.group({
+      itemName: [data.itemName, Validators.required],
+      itemDescription: [data.itemDescription, Validators.required],
+      itemPrice: [data.itemPrice, Validators.required]
+    });
   }
 
   public submit(): void {
