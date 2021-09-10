@@ -1,12 +1,12 @@
 <form [formGroup]="searchForm">
   <div style="border: 2px solid black; padding: 5px; display: table; margin-bottom: 5px;">
     <div>
-      <label for="">First Name</label><br>
+      <label for=""><small>First Name :</small></label><br>
       <input type="text" formControlName="fname">
-    </div>
+    </div><br>
 
     <div>
-      <label for="">Last Name</label><br>
+      <label for=""><small>Last Name :</small></label><br>
       <input type="text" formControlName="lname">
     </div><br>
   </div>
@@ -16,24 +16,21 @@
   <div formArrayName="items">
     <div [formGroupName]="i" *ngFor="let data of searchForm.get('items').controls; let i = index;"
       style="border: 2px solid black; padding: 5px; display: table; margin-bottom: 5px;">
+      <b style="background: gray; color: white; padding: 3px;"># {{ i + 1 }}</b><br><br>
       <div>
-        <label for="">Item Name</label><br>
+        <label for=""><small>Item Name :</small></label><br>
         <input type="text" formControlName="itemName">
       </div><br>
 
       <div>
-        <label for="">Item Description</label><br>
+        <label for=""><small>Item Description :</small></label><br>
         <input type="text" formControlName="itemDescription">
       </div><br>
 
       <div>
-        <label for="">Item Price</label><br>
+        <label for=""><small>Item Price :</small></label><br>
         <input type="text" formControlName="itemPrice">
       </div><br>
-
-      <div>
-        <button type="button" (click)="removeItem(i)">Remove Items</button>
-      </div><br><br>
     </div>
   </div>
 </form>
