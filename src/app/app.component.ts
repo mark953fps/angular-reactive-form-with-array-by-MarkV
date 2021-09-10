@@ -57,7 +57,7 @@ export class AppComponent {
   public loadData(): void {
     if (this.dataFromApi) {
       this.searchForm.controls.fname.setValue(this.dataFromApi.fname);
-      this.searchForm.controls.lname.setValue(this.dataFromApi.fname);
+      this.searchForm.controls.lname.setValue(this.dataFromApi.lname);
 
       if (this.dataFromApi.items.length) {
         this.dataFromApi.items.forEach(data => this.addItem(data));
