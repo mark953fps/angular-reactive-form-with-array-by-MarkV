@@ -70,10 +70,6 @@ export class AppComponent {
     this.items.push(this.createForm(data));
   }
 
-  public removeItem(i): void {
-    this.items.removeAt(i);
-  }
-
   public submit(): void {
     console.log(this.searchForm.value, 'submit data');
   }
