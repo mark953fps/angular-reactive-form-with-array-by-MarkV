@@ -1,0 +1,45 @@
+<button type="button" (click)="addItem()">Add Items</button><br><br>
+
+<form [formGroup]="searchForm">
+  <div style="border: 2px solid black; padding: 5px; display: table; margin-bottom: 5px;">
+    <div>
+      <label for="">First Name</label><br>
+      <input type="text" formControlName="fname">
+    </div>
+
+    <div>
+      <label for="">Last Name</label><br>
+      <input type="text" formControlName="lname">
+    </div><br>
+  </div>
+
+  <hr><br>
+
+  <div formArrayName="items">
+    <div [formGroupName]="i" *ngFor="let data of searchForm.get('items').controls; let i = index;"
+      style="border: 2px solid black; padding: 5px; display: table; margin-bottom: 5px;">
+      <div>
+        <label for="">Item Name</label><br>
+        <input type="text" formControlName="itemName">
+      </div><br>
+
+      <div>
+        <label for="">Item Description</label><br>
+        <input type="text" formControlName="itemDescription">
+      </div><br>
+
+      <div>
+        <label for="">Item Price</label><br>
+        <input type="text" formControlName="itemPrice">
+      </div><br>
+
+      <div>
+        <button type="button" (click)="removeItem(i)">Remove Items</button>
+      </div><br><br>
+    </div>
+  </div>
+</form>
+
+<hr>
+
+<button type="button" (click)="submit()" [disabled]="!searchForm.valid">Submit</button>
