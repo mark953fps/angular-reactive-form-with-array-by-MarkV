@@ -9,28 +9,40 @@
       <label for=""><small>Last Name :</small></label><br>
       <input type="text" formControlName="lname">
     </div><br>
+
+    <div>
+      <label for=""><small>Data Select :</small></label><br>
+      <select formControlName="dataSelect">
+      <ng-container *ngFor="let data of dataFromApi.dataSelect">
+        <option [value]="data.code">{{ data.code }}</option>
+      </ng-container>
+    </select>
+    </div><br>
   </div>
 
   <hr><br>
 
   <div formArrayName="items">
-    <div [formGroupName]="i" *ngFor="let data of searchForm.get('items').controls; let i = index;"
-      style="border: 2px solid black; padding: 5px; display: table; margin-bottom: 5px;">
-      <b style="background: gray; color: white; padding: 3px;"># {{ i + 1 }}</b><br><br>
-      <div>
-        <label for=""><small>Item Name :</small></label><br>
-        <input type="text" formControlName="itemName">
-      </div><br>
+    <div [formGroupName]="i" *ngFor="let data of searchForm.get('items').controls; let i = index;">
+      <ng-container *ngIf="dataFromApi.items[i].code === searchForm.controls.dataSelect.value">
+        <div style="border: 2px solid black; padding: 5px; display: table; margin-bottom: 5px;">
+          <b style="background: gray; color: white; padding: 3px;"># {{ i + 1 }}</b><br><br>
+          <div>
+            <label for=""><small>Item Name :</small></label><br>
+            <input type="text" formControlName="itemName">
+          </div><br>
 
-      <div>
-        <label for=""><small>Item Description :</small></label><br>
-        <input type="text" formControlName="itemDescription">
-      </div><br>
+          <div>
+            <label for=""><small>Item Description :</small></label><br>
+            <input type="text" formControlName="itemDescription">
+          </div><br>
 
-      <div>
-        <label for=""><small>Item Price :</small></label><br>
-        <input type="text" formControlName="itemPrice">
-      </div><br>
+          <div>
+            <label for=""><small>Item Price :</small></label><br>
+            <input type="text" formControlName="itemPrice">
+          </div><br>
+        </div>
+      </ng-container>
     </div>
   </div>
 </form>

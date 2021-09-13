@@ -12,20 +12,35 @@ export class AppComponent {
   public dataFromApi: any = {
     fname: 'Mark',
     lname: 'Villegas',
+    dataSelect: [
+      { id: 1, code: 'dummy1' },
+      { id: 2, code: 'dummy2' },
+      { id: 3, code: 'dummy3' }
+    ],
     items: [
       {
+        code: 'dummy1',
         id: 1,
         itemName: 'item 1',
         itemDescription: 'dummy text',
         itemPrice: 100
       },
       {
+        code: 'dummy2',
         id: 2,
         itemName: 'item 2',
         itemDescription: 'dummy text',
         itemPrice: 200
       },
       {
+        code: 'dummy3',
+        id: 3,
+        itemName: 'item 3',
+        itemDescription: 'dummy text',
+        itemPrice: 300
+      },
+      {
+        code: 'dummy3',
         id: 3,
         itemName: 'item 3',
         itemDescription: 'dummy text',
@@ -40,6 +55,7 @@ export class AppComponent {
     this.searchForm = this.fb.group({
       fname: ['', Validators.required],
       lname: ['', Validators.required],
+      dataSelect: ['', Validators.required],
       items: this.fb.array([])
     });
 
