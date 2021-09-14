@@ -87,6 +87,21 @@ export class AppComponent {
   }
 
   public submit(): void {
-    console.log(this.searchForm.value, 'submit data');
+    console.log(this.searchForm.value, 'submit');
+    console.log(
+      this.removeSpaceAfterEndOfWords(this.searchForm.controls.fname.value),
+      'output'
+    );
+  }
+
+  public removeSpaceAfterEndOfWords(str): any {
+    let getCounter: number;
+    let strSplit = str.split(' ');
+
+    strSplit.filter((d, i) => (d ? (getCounter = i) : null));
+    strSplit.splice(getCounter + 1, strSplit.length - getCounter);
+    let output = strSplit.join(' ');
+
+    return JSON.stringify(output);
   }
 }
