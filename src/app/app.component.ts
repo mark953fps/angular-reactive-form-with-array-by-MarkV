@@ -87,21 +87,15 @@ export class AppComponent {
   }
 
   public submit(): void {
-    console.log(this.searchForm.value, 'submit');
-    console.log(
-      this.removeSpaceAfterEndOfWords(this.searchForm.controls.fname.value),
-      'output'
-    );
+    // console.log(this.searchForm.value, 'submit');
+    // console.log(this.removeSpaceAfterEndOfWords(this.searchForm.controls.fname.value),'output');
+    this.removeSpaceAfterEndOfWords(this.searchForm.controls.fname.value);
   }
 
   public removeSpaceAfterEndOfWords(str): any {
-    let getCounter: number;
-    let strSplit = str.split(' ');
+    let getWordArr = [];
+    str.split(' ').filter(d => d ? getWordArr.push(d) : null);
 
-    strSplit.filter((d, i) => (d ? (getCounter = i) : null));
-    strSplit.splice(getCounter + 1, strSplit.length - getCounter);
-    let output = strSplit.join(' ');
-
-    return JSON.stringify(output);
+    console.log(JSON.stringify(getWordArr.join(' ')), 'output')
   }
 }
